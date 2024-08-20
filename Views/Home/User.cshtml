@@ -1,19 +1,43 @@
-﻿@{
+﻿@model Article
+
+@{
     ViewData["Title"] = "User";
 }
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
+
     <p id="user"></p>
+    
     <div id="articleList"></div>
 </div>
-<input type="hidden" id="signalRConnectionId" />
+
+
+@* <input type="text" id="signalRConnectionId" />
+ *@
+
+
+<div class="row">
+    <div class="col-12">
+        User Id
+    </div>
+    <div class="form-group mb-2">
+        <input type="text" class="form-control mr-2" name="recId" id="signalRConnectionId" placeholder="RecivedId" />
+    </div>
+</div>
+<button type="button" id="sendMesg" class="btn btn-primary mr-2">Send Mes</button>
+
+
+@* 
 <script>
+
+
            function ready() {
     }
            //random number between 1 and 100 for demo
            var userId = Math.floor((Math.random() * 100) + 1); document.addEventListener("DOMContentLoaded", ready);
            document.getElementById("user").innerHTML = "UserId: " + userId;
-</script>
+</script> *@
 
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
 <script src="/js/usernotification.js"></script>
+<script src="~/js/notification.js"></script>

@@ -10,12 +10,13 @@ namespace SendMessageForOneUser.wwwroot.Hubs
         {
             _userConnectionManager = userConnectionManager;
         }
-        public string GetConnectionId()
+        public string GetConnectionId(string userId)
         {
-            var httpContext = this.Context.GetHttpContext();
-            var userId = httpContext.Request.Query["userId"];
+            //var httpContext = this.Context.GetHttpContext();
+            //var userId = httpContext.Request.Query["userId"];
             _userConnectionManager.KeepUserConnection(userId,Context.ConnectionId);
             return Context.ConnectionId;
+            
         }
         //Called when a connection with the hub is terminated.
         public async override Task OnDisconnectedAsync(Exception exception)

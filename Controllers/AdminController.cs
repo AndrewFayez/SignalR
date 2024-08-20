@@ -8,7 +8,7 @@ namespace SendMessageForOneUser.Controllers
 {
     public class AdminController : Controller
     {
-
+        //private readonly IHubContext<NotificationHub> _notificationHubContext;
         private readonly IHubContext<NotificationUserHub> _notificationUserHubContext;
         private readonly IUserConnectionManager _userConnectionManager;
         public AdminController( IHubContext<NotificationUserHub> notificationUserHubContext, IUserConnectionManager userConnectionManager)
@@ -16,6 +16,7 @@ namespace SendMessageForOneUser.Controllers
           
             _notificationUserHubContext = notificationUserHubContext;
             _userConnectionManager = userConnectionManager;
+            //_notificationHubContext = notificationHubContext;
         }
 
         public IActionResult SendToSpecificUser()
@@ -35,6 +36,18 @@ namespace SendMessageForOneUser.Controllers
             }
             return View();
         }
+
+        public IActionResult Index()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Index(Article model)
+        {
+            await _notificationUserHubContext.Clients.All.SendAsync("sendToUser", model.articleHeading, model.articleContent);
+            return View();
+        }
+
 
 
     }
