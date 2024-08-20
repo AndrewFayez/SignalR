@@ -33,16 +33,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapHub<NotificationUserHub>("/NotificationUserHub");
-app.MapHub<NotificationUserHub>("/NotificationHub");
-//app.UseEndpoints(endpoints =>
-//{
-//endpoints.MapControllerRoute(
-//    name: "default",
-//    pattern: "{controller=Home}/{action=Index}/{id?}");
 
-
-//    endpoints.MapHub<NotificationUserHub>("/NotificationUserHub");
-//});
 
 
 app.Run();
